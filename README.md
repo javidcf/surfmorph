@@ -145,13 +145,14 @@ possible to parallelize the interpolation operation by defining the macro
 `SURFMORPH_PARALLELIZE_INTERPOLATION` at compile time. Note that this is
 generally not recommended unless only a single interpolation is computed.
 
-## What are [Shape interpolation.ipynb](Shape%20interpolation.ipynb) and [surfmorph_codegen.h](surfmorph_codegen.h)?
+## What are [Shape interpolation.ipynb](Shape%20interpolation.ipynb) and [surfmorph_codegen.h](include/surfmorph/surfmorph_codegen.h)?
 
 The implementation of the algorithm requires some complex math derivation that
 is not practical to solve by hand.
 [Shape interpolation.ipynb](Shape%20interpolation.ipynb) is a Python notebook that
 uses [SymPy](http://www.sympy.org) to compute this derivation and generate the
-code that implements it in [surfmorph_codegen.h](surfmorph_codegen.h).
+code that implements it in
+[surfmorph_codegen.h](include/surfmorph/surfmorph_codegen.h).
 [Shape interpolation.ipynb](Shape%20interpolation.ipynb) is not necessary to use
-the library, but [surfmorph_codegen.h](surfmorph_codegen.h) is, although you
-should not include it directly in your source code.
+the library, but [surfmorph_codegen.h](include/surfmorph/surfmorph_codegen.h)
+is, although you should not include it directly in your source code.
