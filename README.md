@@ -10,7 +10,7 @@ for 3D meshes. It is designed as a header-only library and it only depends on
 ## What does it do?
 
 It allows you to create an animation for a 3D mesh based on a sequence of two or
-more key poses. Intermmediate poses can be interpolated with arbitrary precision
+more key poses. Intermediate poses can be interpolated with arbitrary precision
 to generate animation frames, and the result shows an animation that is "as
 rigid as possible" in the sense that in minimizes the deformation of the
 triangles along the way.
