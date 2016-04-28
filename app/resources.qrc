@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource>
+        <file>shaders/vertex.glsl</file>
+        <file>shaders/fragment.glsl</file>
+        <file>doc/help.html</file>
+    </qresource>
+</RCC>
