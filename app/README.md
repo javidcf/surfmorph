@@ -1,9 +1,8 @@
-<div align="center" markdown="1">
-![Animation demonstration](demo.gif)
-</div>
 
 # animator
 Pose animation app.
+
+![Animation demonstration](demo.gif)
 
 This application interpolates 3D pose mesh files and displays an interactive
 animation.
