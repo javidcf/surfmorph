@@ -55,8 +55,6 @@ processArgs(const QApplication &app)
     QCommandLineParser parser;
     parser.setApplicationDescription("Animates a mesh by interpolating "
                                      "multiple poses.");
-    parser.addHelpOption();
-    parser.addVersionOption();
 
     parser.addPositionalArgument("pose files", "Mesh pose files (2 or more).",
                                  "<pose files...>");
@@ -67,6 +65,9 @@ processArgs(const QApplication &app)
          "seconds"},
         {{"f", "fps"}, "Frames per second (default: 25).", "fps", "25"},
     });
+
+    parser.addHelpOption();
+    parser.addVersionOption();
 
     parser.process(app);
 

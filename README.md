@@ -133,7 +133,7 @@ $ ./surfmorph_test.cpp
 
 The [app](app) directory contains an application that displays an interactive
 animation interpolated along the given poses. Besides this library and
-[Eigen](http://eigen.tuxfamily.org/), it requires
+[Eigen](http://eigen.tuxfamily.org), it requires
 [OpenMesh](http://www.openmesh.org), [Qt 5](https://www.qt.io) and
 [libQGLViewer](http://libqglviewer.com). Also, the compilation system has only
 been configure for Linux, although it should be straightforward to port to other
