@@ -7,6 +7,8 @@
 //! Usage:
 //!   animator [-d|--duration <duration (s)>] [-f|--fps <frames per second>] <pose files>...
 //!
+//! \author Javier Dehesa (javidcf@gmail.com)
+//!
 // clang-format on
 
 

@@ -216,6 +216,8 @@ void Animator::generateAnimation(
     m_numVertices = basePose.n_vertices();
     SurfaceMorph surfaceMorph = createSurfaceMorph(poses);
     generateAnimationFrames(basePose, surfaceMorph);
+
+    qInfo() << "Animation generated";
 }
 
 Animator::SurfaceMorph Animator::createSurfaceMorph(

@@ -62,6 +62,8 @@ struct pairhash
 //!       defining the macro SURFMORPH_PARALLELIZE_INTERPOLATION on compile
 //!       time.
 //!
+//! \author Javier Dehesa (javidcf@gmail.com)
+//!
 // clang-format on
 template <typename ScalarT>
 class SurfaceMorph

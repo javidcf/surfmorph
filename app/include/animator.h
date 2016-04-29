@@ -24,6 +24,8 @@
 //! Animates a mesh by interpolating several poses. The poses must be mesh files
 //! stored in disk, and vertex indices are assumed to be registered.
 //!
+//! \author Javier Dehesa (javidcf@gmail.com)
+//!
 class Animator : public QGLViewer, QOpenGLFunctions
 {
 public:
