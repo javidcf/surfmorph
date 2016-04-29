@@ -1,6 +1,6 @@
-<center>
+<div style="width: 100%; text-align: center;">
 ![Animation demonstration](demo.gif)
-</center>
+</dive>
 
 # animator
 Pose animation app.
