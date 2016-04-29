@@ -4,6 +4,8 @@ Pose animation app.
 This application interpolates 3D pose mesh files and displays an interactive
 animation.
 
+![Animation demonstration](demo.gif)
+
 The building system only supports Linux systems at the moment, although it
 should be straightforward to port it to other platforms.
 
