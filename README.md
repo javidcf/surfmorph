@@ -1,6 +1,8 @@
 # surfmorph
 Mesh pose interpolation in C++11 with Eigen.
 
+![Animation demonstration](app/demo.gif)
+
 This is an implementation of
 [as-rigid-as-possible surface morphing](http://link.springer.com/article/10.1007/s11390-011-1154-3)
 for 3D meshes. It is designed as a header-only library and it only depends on
