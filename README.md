@@ -1,5 +1,5 @@
 # surfmorph
-Mesh pose interpolation in C++11 with Eigen.
+Mesh pose interpolation in C++11 with [Eigen](http://eigen.tuxfamily.org).
 
 ![Animation demonstration](app/demo.gif)
 
