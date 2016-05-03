@@ -1,8 +1,7 @@
 
 # animator
-Pose animation app.
 
-This application interpolates 3D pose mesh files and displays an interactive
+An application that interpolates 3D pose mesh files and displays an interactive
 animation.
 
 The building system only supports Linux systems at the moment, although it
