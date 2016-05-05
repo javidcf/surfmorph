@@ -257,7 +257,8 @@ public:
         const auto &poseQuaternions = m_quaternions[poseIdx];
         const auto &poseTranslations = m_translations[poseIdx];
         const auto &poseUInvs = m_uInvs[poseIdx];
-        const auto &poseAreas = m_areas[poseIdx];
+        const auto &poseStartAreas = m_startAreas[poseIdx];
+        const auto &poseEndAreas = m_endAreas[poseIdx];
         const auto poseAlpha = m_alphas[poseIdx];
 
         // If it is exactly a pose use it and finish
@@ -290,11 +291,14 @@ public:
             Vec3 p2 = pose.col(p2Idx);
             Vec3 p3 = pose.col(p3Idx);
 
-            // Find triangle area
-            Scalar area = poseAreas(0, iTetra);
-
             // Interpolate transformation
             Scalar tRel{t - poseIdx};
+
+            // Triangle area
+            Scalar startArea = poseStartAreas(0, iTetra);
+            Scalar endArea = poseEndAreas(0, iTetra);
+            Scalar area = startArea * (Scalar(1) - tRel) + endArea * t;
+
             // Irrotation
             auto irrotVec = poseIrrotations.col(iTetra);
             TransfromMat irrotation;
@@ -373,8 +377,10 @@ private:
     std::vector<TranslationsMat> m_translations;
     //! U inverse matrices
     std::vector<UInvsMat> m_uInvs;
-    //! Triangle areas
-    std::vector<AreasMat> m_areas;
+    //! Triangle areas at start
+    std::vector<AreasMat> m_startAreas;
+    //! Triangle areas at end
+    std::vector<AreasMat> m_endAreas;
     //! Alpha coefficients
     std::vector<Scalar> m_alphas;
 
@@ -412,7 +418,8 @@ private:
             QuaternionsMat quaternions(4, m_tetrahedra.cols());
             TranslationsMat translations(3, m_tetrahedra.cols());
             UInvsMat uInvs(9, m_tetrahedra.cols());
-            AreasMat areas(1, m_tetrahedra.cols());
+            AreasMat startAreas(1, m_tetrahedra.cols());
+            AreasMat endAreas(1, m_tetrahedra.cols());
 
 #ifndef SURFMORPH_DONT_PARALLELIZE
             Eigen::setNbThreads(1);
@@ -434,8 +441,9 @@ private:
                 auto v2 = newPose.col(p2Idx);
                 auto v3 = newPose.col(p3Idx);
 
-                // Find triangle area (on previous pose)
-                Scalar area = ((u1 - u0).cross(u2 - u1)).norm() / Scalar(2);
+                // Find triangle areas
+                Scalar startArea = ((u1 - u0).cross(u2 - u1)).norm() / Scalar(2);
+                Scalar endArea = ((v1 - v0).cross(v2 - v1)).norm() / Scalar(2);
 
                 // Compute transformation between poses
                 TransfromMat u;
@@ -467,7 +475,8 @@ private:
                 uInvs.col(iTetra) << uInv(0, 0), uInv(0, 1), uInv(0, 2),
                                      uInv(1, 0), uInv(1, 1), uInv(1, 2),
                                      uInv(2, 0), uInv(2, 1), uInv(2, 2);
-                areas.col(iTetra) << area;
+                startAreas.col(iTetra) << startArea;
+                endAreas.col(iTetra) << endArea;
                 // clang-format on
             }
 #ifndef SURFMORPH_DONT_PARALLELIZE
@@ -477,7 +486,8 @@ private:
             m_quaternions.push_back(std::move(quaternions));
             m_translations.push_back(std::move(translations));
             m_uInvs.push_back(std::move(uInvs));
-            m_areas.push_back(std::move(areas));
+            m_startAreas.push_back(std::move(startAreas));
+            m_endAreas.push_back(std::move(endAreas));
 
             // Compute alpha value from bounding box of previous pose
             Vec3 mins;
